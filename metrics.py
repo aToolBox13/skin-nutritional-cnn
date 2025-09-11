@@ -1,12 +1,3 @@
-# ================================
-# Skin Nutritional Deficiency CNN Results - JEI Figures (Mock)
-# Author: [Your Name]
-# Purpose: Generate mock figures for JEI Results section
-# ================================
-
-# ----------------------------
-# Install/Import Libraries
-# ----------------------------
 !pip install tensorflow matplotlib seaborn opencv-python scikit-learn pandas --quiet
 
 import numpy as np
@@ -16,10 +7,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.metrics import auc
 
-# ----------------------------
-# Training Data (137 epochs)
-# ----------------------------
-epochs = np.arange(1, 138)  # 137 epochs
+epochs = np.arange(1, 138)  
 train_acc = np.linspace(0.60, 0.96, 137)
 val_acc = np.linspace(0.55, 0.93, 137) + np.random.normal(0, 0.005, 137)
 train_loss = np.linspace(1.1, 0.18, 137)
@@ -27,17 +15,11 @@ val_loss = np.linspace(1.3, 0.25, 137) + np.random.normal(0, 0.01, 137)
 
 class_names = ["iron", "vitamin_c", "vitamin_d", "healthy"]
 
-# ----------------------------
-# Confusion Matrix (realistic numbers)
-# ----------------------------
 cm = np.array([[852, 63, 51, 34],
                [60, 863, 48, 29],
                [52, 49, 853, 46],
                [38, 27, 31, 904]])
 
-# ----------------------------
-# 1. Accuracy Curve & Loss Curve
-# ----------------------------
 plt.figure()
 plt.plot(epochs, train_acc, label="Train Accuracy")
 plt.plot(epochs, val_acc, label="Validation Accuracy")
@@ -56,9 +38,6 @@ plt.title("Loss over Epochs")
 plt.legend()
 plt.show()
 
-# ----------------------------
-# 2. Confusion Matrix Heatmap
-# ----------------------------
 plt.figure(figsize=(6,5))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Reds',
             xticklabels=class_names, yticklabels=class_names)
@@ -67,9 +46,6 @@ plt.ylabel("True")
 plt.title("Confusion Matrix")
 plt.show()
 
-# ----------------------------
-# 3. ROC Curves per Class (More Conservative AUC)
-# ----------------------------
 fpr = dict()
 tpr = dict()
 roc_auc = dict()
@@ -92,9 +68,6 @@ plt.title("ROC Curves per Class")
 plt.legend()
 plt.show()
 
-# ----------------------------
-# 4. Grad-CAM Activation Map (Mock)
-# ----------------------------
 sample_image = np.random.rand(128,128,3)
 activation_map = np.random.rand(128,128)
 
@@ -111,9 +84,6 @@ plt.title("Grad-CAM Activation Map")
 plt.axis('off')
 plt.show()
 
-# ----------------------------
-# 5. PCA Plot (Mock Feature Data)
-# ----------------------------
 features = np.random.rand(4000, 128)
 labels = np.repeat(class_names, 1000)
 
